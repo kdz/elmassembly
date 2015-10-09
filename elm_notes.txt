@@ -1,0 +1,9 @@
+Elm conventions
+
+Uppercased:
+	Type
+	Module
+	Constructor
+Lowercased:
+	value
+
