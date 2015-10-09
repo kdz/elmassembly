@@ -1,9 +1,10 @@
+module Program where 
+
 import Array
 import Basics
+import Html as H
 
 import Debug
-pass : a
-pass = Debug.crash "Not Implemented"
 
 
 ---- Program Representation -----
@@ -36,7 +37,6 @@ p2 : Program
 p2 = [Setn (R 5) 10, Sub (R 5) (R 3) (R 2)]
 
 
-
 ---- Program Execution -----
 
 type alias RegArray = Array.Array Int
@@ -45,10 +45,41 @@ type alias RAM = Array.Array Int
 
 type alias MemoryState = (RegArray, RAM)
 
-execInstruc : Instruction -> MemoryState -> MemoryState
-execInstruc i m =
-    case i of -- Setn (R rn) v
-        Setn (R n) v -> pass --some_new_mem_state m n v
-        Sub (R n1) (R n2) (R n3) -> pass --new_mem_state n1 n2 n3 m
+--execInstruc : Instruction -> MemoryState -> MemoryState
+--execInstruc i m =
+    --case i of -- Setn (R rn) v
+        --Setn (R n) v -> pass --some_new_mem_state m n v
+        --Sub (R n1) (R n2) (R n3) -> pass --new_mem_state n1 n2 n3 m
 
-main = Basics.toString p1
+------ View --------
+{-
+    <table>
+        <thead>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>instr-1</td>
+            </tr>
+                <td>instr-2</td>
+            </tr>
+        </tbody>
+    </table>
+-}
+
+indexedInstrucToHtml : Int -> Instruction -> H.Html
+indexedInstrucToHtml i instr = 
+    H.tr [] 
+        [ H.td [] [i |> toString |> H.text],
+          H.td [] [instr |> toString |> H.text]]
+
+
+type alias Model = Program
+
+view : Model -> H.Html
+view model =
+    H.table [] (List.indexedMap indexedInstrucToHtml model)
+
