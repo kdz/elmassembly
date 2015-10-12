@@ -3,6 +3,7 @@ module Program where
 import Array
 import Basics
 import Html as H
+import Html.Attributes as HA
 
 import Debug
 
@@ -81,5 +82,17 @@ type alias Model = Program
 
 view : Model -> H.Html
 view model =
-    H.table [] (List.indexedMap indexedInstrucToHtml model)
+  let 
+    tableList = List.indexedMap indexedInstrucToHtml model
+    headers = H.thead [] 
+                [ H.tr [] 
+                  [ H.td [] [ H.text "Addr"], 
+                    H.td [] [ H.text "Instruction"]]]
+  in
+  H.div [] 
+    [ H.node "link" [HA.rel "stylesheet", HA.href "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"] [],
+      H.node "link" [HA.rel "stylesheet", HA.href "../css/style.css"] [],
+      H.table [HA.class "pure-table", HA.id "assemblytable"] 
+        (headers :: tableList)
+    ]
 

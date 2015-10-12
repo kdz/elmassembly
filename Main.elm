@@ -1,3 +1,5 @@
+module Main where
+
 import Program as P
 import Html as H
 
