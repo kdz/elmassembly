@@ -90,8 +90,14 @@ view model =
                     H.td [] [ H.text "Instruction"]]]
   in
   H.div [] 
-    [ H.node "link" [HA.rel "stylesheet", HA.href "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"] [],
+    [ H.h1 [] [H.text "Assembly Language Simulator in Elm"],
+      H.text "Simulator for ", 
+      H.a [HA.href "https://www.cs.hmc.edu/~cs5grad/cs5/hmmm/documentation/documentation.html"] [H.text "The Harvey Mudd Miniature Machine."],
+
+      H.node "link" [HA.rel "stylesheet", HA.href "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"] [],
+
       H.node "link" [HA.rel "stylesheet", HA.href "../css/style.css"] [],
+      
       H.table [HA.class "pure-table", HA.id "assemblytable"] 
         (headers :: tableList)
     ]
