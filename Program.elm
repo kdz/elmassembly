@@ -94,6 +94,8 @@ view model =
       H.text "Simulator for ", 
       H.a [HA.href "https://www.cs.hmc.edu/~cs5grad/cs5/hmmm/documentation/documentation.html"] [H.text "The Harvey Mudd Miniature Machine."],
 
+      H.h2 [] [H.text "Work in progress: represent instructions, represent RAM and registers, interpret instructions, ..."],
+
       H.node "link" [HA.rel "stylesheet", HA.href "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"] [],
 
       H.node "link" [HA.rel "stylesheet", HA.href "../css/style.css"] [],
